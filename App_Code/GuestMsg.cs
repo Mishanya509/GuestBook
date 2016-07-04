@@ -59,4 +59,17 @@ public static class GuestMsg
         }
     }
 
+    public static DataTable SearchMsg( string query  )
+    {
+        using (SqlConnection connection = new SqlConnection(WebConfigurationManager.ConnectionStrings["main_test_1ConnectionString"].ConnectionString))
+        {
+            connection.Open();
+            SqlCommand cmd = new SqlCommand("select * from GuestMsg gm where UPPER(gm.UserName) like UPPER('%"+ query + "%') or gm.Msg like UPPER('%" + query + "%') order by WhnCrt desc", connection);
+            SqlDataReader redear = cmd.ExecuteReader();
+            DataTable result = new DataTable();
+            result.Load(redear);
+            return result;
+        }
+    }
+
 }
