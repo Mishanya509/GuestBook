@@ -16,7 +16,8 @@ public class MsgSearch : IHttpHandler {
             DataTable res = GuestMsg.SearchMsg(query);
             foreach (DataRow row in res.Rows)
             {
-                response.Write( String.Join(",",row.ItemArray) + ";" );
+                //response.Write( String.Join(",",row.ItemArray) + ";" );
+                response.Write( row["id"] + ";" );
             }
         }
         catch(Exception ex)

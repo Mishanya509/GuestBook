@@ -40,14 +40,15 @@ public partial class _Default : System.Web.UI.Page
         //card.Attributes["class"] = "row";
 
         HtmlGenericControl cardBlock = new HtmlGenericControl("div");
-        cardBlock.Attributes["class"] = "col-sm-6 col-md-4";
+        cardBlock.Attributes["class"] = "col-sm-6 col-md-4 msgBlock";
+        cardBlock.Attributes["data-itmid"] = row["id"].ToString();
 
         //cardBlock.InnerHtml = "<h4 class='card-title'>"+ row["UserName"].ToString()+"</h4>"+
         //    "<p class='card-text'>"+ row["Msg"].ToString() + "</p>"+
         //    "<a href = '#' class='btn btn-primary'>Go somewhere</a>";
 
         cardBlock.InnerHtml =
-            "<div class='thumbnail'>" +
+            "<div class='thumbnail'  >" +
               "<div class='caption'>" +
                 "<h3>" + ((DateTime)row["WhnCrt"]).ToString("d.M.yyyy") + "&nbsp;-&nbsp;" + row["UserName"].ToString() + "</h3>" +
                 "<p>" + row["Msg"].ToString() + "</p>" +
