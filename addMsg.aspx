@@ -2,62 +2,54 @@
 
 <asp:Content ID="addMsgForm" ContentPlaceHolderID="ContentPlaceHolderMain" runat="server">
 
+
     <form id="form1" runat="server">
         <div>
-
             <div class="form-group">
-                <label class="col-sm-2 control-label" for="form-group-input">My label</label>
+                <label class="col-sm-2 control-label" for="userName">Имя</label>
                 <div class="col-sm-10">
-                    <input type="text" class="form-control" id="form-group-input" placeholder="My label">
+                    <asp:TextBox  class="form-control" ID="userName" runat="server" Width="406px"></asp:TextBox>
                 </div>
             </div>
 
-            <table>
-                <tr>
-                    <td>Имя</td>
-                    <td>
-                        <asp:TextBox ID="userName" runat="server" Width="406px"></asp:TextBox>
-                    </td>
-                </tr>
+            <div class="form-group">
+                <label class="col-sm-2 control-label" for="form-group-input">E-mail</label>
+                <div class="col-sm-10">
+                    <asp:TextBox ID="email" runat="server" Width="406px"  class="form-control"></asp:TextBox>
+                    <asp:RegularExpressionValidator runat="server" ID="RegularExpressionValidator1"
+                        ControlToValidate="email" ValidationExpression=".*@.{2,}\..{2,}"
+                        ErrorMessage="Некорректный формат E-mail" Display="dynamic">*
+                    </asp:RegularExpressionValidator>
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="col-sm-2 control-label" for="form-group-input">Ссылка на профиль</label>
+                <div class="col-sm-10">
+                    <asp:TextBox ID="link" runat="server" Width="407px"  class="form-control"></asp:TextBox>
+                </div>
+            </div>
 
-                <tr>
-                    <td>E-mail</td>
-                    <td>
-                        <asp:TextBox ID="email" runat="server" Width="406px"></asp:TextBox>
-                        <asp:RegularExpressionValidator runat="server" ID="ValidateEmail"
-                            ControlToValidate="email" ValidationExpression=".*@.{2,}\..{2,}"
-                            ErrorMessage="Некорректный формат E-mail" Display="dynamic">*
-                        </asp:RegularExpressionValidator>
-                    </td>
-                </tr>
+            <div class="form-group">
+                <label class="col-sm-2 control-label" for="form-group-input">Сообщение</label>
+                <div class="col-sm-10">
+                    <asp:TextBox ID="msgText" runat="server" Height="139px" Width="402px" TextMode="MultiLine"  class="form-control"></asp:TextBox>
+                </div>
+            </div>
 
-                <tr>
-                    <td>Ссылка на профиль</td>
-                    <td>
-                        <asp:TextBox ID="link" runat="server" Width="407px"></asp:TextBox>
-                    </td>
-                </tr>
+            <div class="form-group">
 
-                <tr>
-                    <td>Сообщение</td>
-                    <td>
-                        <asp:TextBox ID="msgText" runat="server" Height="139px" Width="402px" TextMode="MultiLine"></asp:TextBox>
-                    </td>
-                </tr>
-                <tr>
-                    <td colspan="2" style="text-align: right">
+                <div class="col-sm-10">
+                    <asp:Button ID="Button1" runat="server" Text="Отправить" OnClick="sendMsg_Click" class="btn btn-primary" /> 
+                </div>
+            </div>
 
-                        <asp:Button ID="sendMsg" runat="server" Text="Отправить" OnClick="sendMsg_Click" />
-
-                    </td>
-                </tr>
-                <tr>
-                    <td colspan="2" style="text-align: center">
-                        <asp:ValidationSummary runat="server" ID="Summary" DisplayMode="BulletList"
+            <div class="form-group">
+                <div class="col-sm-10">
+                    <asp:ValidationSummary runat="server" ID="ValidationSummary1" DisplayMode="BulletList"
                             HeaderText="<b>Пожалуйста, исправьте следующие ошибки: </b>" ShowSummary="true" />
-                    </td>
-                </tr>
-            </table>
+                </div>
+            </div>
+
         </div>
     </form>
 </asp:Content>
